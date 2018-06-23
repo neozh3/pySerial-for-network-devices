@@ -1,6 +1,7 @@
 # pySerial for network devices
 
 This is a template for automating sending commands via console and extracting the output into a text file.
+The code has only been tested on a Cisco switch.
 Some parts of the code is from https://github.com/ktbyers/pynet/blob/master/serial/cisco_serial.py
 
 Note that the code reads from the console after every command instead of all at once after inputting every command is because there is a limit to the number of bytes readable in one go (I think, after multiple tests).
