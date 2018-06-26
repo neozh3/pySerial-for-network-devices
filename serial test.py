@@ -1,13 +1,17 @@
 import serial
 import time
-#import os
+#import serial.tools.list_ports
 
 # Things to note
 #~~~~~~~~~~~~~~~~
 # Commands sent to devices need to be in binary format 
 
+#Check which COM ports are being used, use the first comport
+#comport = serial.tools.list_ports.comports()[0]
+
+
 ser = serial.Serial(
-    port = 'COM1',
+    port = 'COM1', # Or port = comport
     baudrate=9600, 
     parity='N',    
     stopbits=1,
@@ -39,7 +43,6 @@ def type(command = '', ser = ser, delay = 0.5):
 
 	ser.write(command)
 	time.sleep(delay)
-	#return read_serial(ser)
 
 #Commands to type, make sure that output is not too long
 toType = [
@@ -63,7 +66,6 @@ with open('test.txt', 'ab') as txt:
 
 	type('show run', delay = 3)
 	txt.write(read_serial(ser))
-	#type('show vlan br')
 
 
 #Closes the serial connection
